@@ -27,7 +27,7 @@ sleep 1
 
 /usr/bin/blueboat-mds -l 0.0.0.0:2999 -c /mds.yaml &
 
-/usr/bin/minio server --address 127.0.0.1:1932 /data/minio &
+/usr/bin/minio server --address 127.0.0.1:1932 --console-address 4001 /data/minio &
 
 sleep 1
 
