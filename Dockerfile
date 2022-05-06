@@ -1,6 +1,6 @@
-FROM ghcr.io/losfair/blueboat-mds:v0.1.1-alpha.9
+FROM ghcr.io/losfair/blueboat-mds:v0.1.4-alpha.3
 
-FROM ghcr.io/losfair/blueboat:v0.2.8-alpha.9
+FROM ghcr.io/losfair/blueboat:v0.2.14-alpha.1
 
 WORKDIR /root
 COPY --from=0 /usr/bin/blueboat-mds /usr/bin/
