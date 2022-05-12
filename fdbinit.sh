@@ -14,7 +14,7 @@ set "\x02m\x00\x02users\x00\x02__USER_PUBKEY__\x00\x02roles\x00" "{\"roles\":[\"
 
 bootstrap_script=$(echo "$bootstrap_script_tpl" \
   | sed s/__FDB_CONFIG__/"$(cat /data/fdb.cluster)"/g \
-  | sed s/__USER_PUBKEY__/"$(cat /mds_key.pub)"/g \
+  | sed s/__USER_PUBKEY__/"$(cat /data/mds_key.pub)"/g \
   | tr -d '\n')
 
 fdbcli --exec "$bootstrap_script"
