@@ -4,11 +4,11 @@ set -e
 
 mkdir -p /data/fdb
 
-if [ ! -f "/mds_key.pub" ]; then
-  openssl genpkey -algorithm ed25519 -outform DER -out /mds_key.der
-  cat /mds_key.der | tail -c +17 | base64 > /mds_key.secret
-  openssl pkey -outform DER -pubout -inform DER -in /mds_key.der | tail -c +13 | xxd -p | tr -d '\n' > /mds_key.pub
-  echo "Generated MDS key at /mds_key.secret. Public key is $(cat /mds_key.pub)."
+if [ ! -f "/data/mds_key.pub" ]; then
+  openssl genpkey -algorithm ed25519 -outform DER -out /data/mds_key.der
+  cat /data/mds_key.der | tail -c +17 | base64 > /data/mds_key.secret
+  openssl pkey -outform DER -pubout -inform DER -in /data/mds_key.der | tail -c +13 | xxd -p | tr -d '\n' > /data/mds_key.pub
+  echo "Generated MDS key at /data/mds_key.secret. Public key is $(cat /data/mds_key.pub)."
 fi
 
 if [ ! -f "/data/fdb.cluster" ]; then
@@ -31,7 +31,7 @@ sleep 1
 
 sleep 1
 
-MDS_KEY="$(cat /mds_key.secret)" /start_blueboat.sh &
+MDS_KEY="$(cat /data/mds_key.secret)" /start_blueboat.sh &
 
 wait -n
 last_status=$?

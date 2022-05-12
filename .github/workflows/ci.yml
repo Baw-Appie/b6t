@@ -24,5 +24,4 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/baw-appie/b6t:v0.2.14-alpha.1
- 
+            ghcr.io/baw-appie/b6t:latest
