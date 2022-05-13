@@ -2,7 +2,7 @@
 
 set -e
 
-fdbcli --exec "configure new single ssd" || echo "Looks like FoundationDB is already configured."
+fdbcli -C /data/fdb.cluster --exec "configure new single ssd" || echo "Looks like FoundationDB is already configured."
 
 bootstrap_script_tpl='
 writemode on;
@@ -17,4 +17,4 @@ bootstrap_script=$(echo "$bootstrap_script_tpl" \
   | sed s/__USER_PUBKEY__/"$(cat /data/mds_key.pub)"/g \
   | tr -d '\n')
 
-fdbcli --exec "$bootstrap_script"
+fdbcli -C /data/fdb.cluster --exec "$bootstrap_script"
