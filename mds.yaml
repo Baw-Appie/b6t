@@ -1,4 +1,4 @@
 rootStore:
-  primary: /etc/foundationdb/fdb.cluster
+  primary: /data/fdb.cluster
   subspace: m
 region: local
